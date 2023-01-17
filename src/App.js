@@ -1,7 +1,14 @@
 import './App.css';
+import ChatList from './components/ChatList';
+import Navbar from './components/Navbar';
 
 function App() {
-  return <div></div>;
+  return (
+    <>
+      <Navbar />
+      <ChatList />
+    </>
+  );
 }
 
 export default App;
