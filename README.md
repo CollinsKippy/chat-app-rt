@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Content
+Initialized with React firebase hooks and Material UI.\
+A single Context will be provided to handle the logic between components.
+
 ## Available Scripts
 
 In the project directory, you can run:
