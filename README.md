@@ -4,7 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Content
 Initialized with React firebase hooks and Material UI.\
-A single Context will be provided to handle the logic between components.
+A single Context will be provided to handle the logic between components.\
+Retrieve chats logic from firestore and render using List component.\
 
 ## Available Scripts
 
