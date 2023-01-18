@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import List from '@mui/material/List';
 import { styled } from '@mui/material/styles';
 import ListItem from '@mui/material/ListItem';
@@ -8,6 +8,8 @@ import Avatar from '@mui/material/Avatar';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import FolderIcon from '@mui/icons-material/Folder';
+import ChatContext from '../contexts/ChatContext';
+import LinearProgress from '@mui/material/LinearProgress';
 
 function generate(element) {
   return [0, 1, 2].map((value) =>
@@ -25,15 +27,18 @@ export default function ChatList() {
   const [dense, setDense] = React.useState(false);
   const [secondary, setSecondary] = React.useState(false);
 
+  const { chats, isChatsLoading, errorLoadingChats } = useContext(ChatContext);
+
   return (
     <Grid container spacing={2} className='ChatList'>
       <Grid item xs={12} md={6}>
         <Typography sx={{ mt: 4, mb: 2 }} variant='h6' component='div'>
-          Avatar with text
+          Chats
         </Typography>
+        {isChatsLoading && <LinearProgress />}
         <Demo>
           <List dense={dense}>
-            {generate(
+            {chats.map((chat) => (
               <ListItem>
                 <ListItemAvatar>
                   <Avatar>
@@ -41,11 +46,11 @@ export default function ChatList() {
                   </Avatar>
                 </ListItemAvatar>
                 <ListItemText
-                  primary='Single-line item'
-                  secondary={secondary ? 'Secondary text' : null}
+                  primary={chat.message}
+                  secondary={chat.displayName}
                 />
               </ListItem>
-            )}
+            ))}
           </List>
         </Demo>
       </Grid>
