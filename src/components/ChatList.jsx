@@ -10,6 +10,9 @@ import Typography from '@mui/material/Typography';
 import FolderIcon from '@mui/icons-material/Folder';
 import ChatContext from '../contexts/ChatContext';
 import LinearProgress from '@mui/material/LinearProgress';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import SpeakerNotesOutlinedIcon from '@mui/icons-material/SpeakerNotesOutlined';
+import { Button, TextField } from '@mui/material';
 
 const Demo = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
@@ -25,13 +28,15 @@ export default function ChatList() {
           Chats
         </Typography>
         {isChatsLoading && <LinearProgress />}
+
+        {errorLoadingChats && <p>Error: {JSON.stringify(errorLoadingChats)}</p>}
         <Demo>
           <List>
             {chats.map((chat) => (
               <ListItem key={chat.id}>
                 <ListItemAvatar>
                   <Avatar>
-                    <FolderIcon />
+                    <AccountCircleOutlinedIcon />
                   </Avatar>
                 </ListItemAvatar>
                 <ListItemText
@@ -42,6 +47,23 @@ export default function ChatList() {
             ))}
           </List>
         </Demo>
+        <Grid
+          container
+          spacing={2}
+          sx={{ display: 'flex', alignItems: 'center', width: '100%' }}
+        >
+          <Grid item sx={{ flexGrow: 1 }}>
+            <TextField
+              sx={{ width: '100%' }}
+              id='outlined-basic'
+              label='Outlined'
+              variant='outlined'
+            />
+          </Grid>
+          <Grid item>
+            <Button sx={{ height: '100%' }} variant='contained'>Send</Button>
+          </Grid>
+        </Grid>
       </Grid>
     </Grid>
   );
