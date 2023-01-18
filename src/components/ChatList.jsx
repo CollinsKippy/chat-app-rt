@@ -11,22 +11,11 @@ import FolderIcon from '@mui/icons-material/Folder';
 import ChatContext from '../contexts/ChatContext';
 import LinearProgress from '@mui/material/LinearProgress';
 
-function generate(element) {
-  return [0, 1, 2].map((value) =>
-    React.cloneElement(element, {
-      key: value,
-    })
-  );
-}
-
 const Demo = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
 }));
 
 export default function ChatList() {
-  const [dense, setDense] = React.useState(false);
-  const [secondary, setSecondary] = React.useState(false);
-
   const { chats, isChatsLoading, errorLoadingChats } = useContext(ChatContext);
 
   return (
@@ -37,9 +26,9 @@ export default function ChatList() {
         </Typography>
         {isChatsLoading && <LinearProgress />}
         <Demo>
-          <List dense={dense}>
+          <List>
             {chats.map((chat) => (
-              <ListItem>
+              <ListItem key={chat.id}>
                 <ListItemAvatar>
                   <Avatar>
                     <FolderIcon />
