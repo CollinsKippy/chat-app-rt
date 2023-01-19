@@ -3,6 +3,9 @@ import {
   getFirestore,
   addDoc,
   serverTimestamp,
+  query,
+  orderBy,
+  limit,
 } from 'firebase/firestore';
 import {
   getAuth,
@@ -19,11 +22,12 @@ const ChatContext = createContext();
 export function ChatContextProvider({ children }) {
   const fireStore = getFirestore(firebaseApp);
   const chatsRef = collection(fireStore, 'chats');
+  const chatsQuery = query(chatsRef, orderBy('createdAt'), limit(10));
+  const [value, isChatsLoading, errorLoadingChats] = useCollection(chatsQuery);
 
   const auth = getAuth(firebaseApp);
   const provider = new GoogleAuthProvider();
 
-  const [value, isChatsLoading, errorLoadingChats] = useCollection(chatsRef);
   const [chats, setChats] = useState([]);
   const [user, setUser] = useState(null);
 
