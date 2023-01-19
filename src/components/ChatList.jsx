@@ -10,7 +10,6 @@ import Typography from '@mui/material/Typography';
 import ChatContext from '../contexts/ChatContext';
 import LinearProgress from '@mui/material/LinearProgress';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
-import { Button, TextField } from '@mui/material';
 
 const Demo = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,

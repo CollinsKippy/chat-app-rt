@@ -37,11 +37,14 @@ function ChatForm() {
       >
         <Box sx={{ flexGrow: 1 }}>
           <TextField
+            type='text'
             disabled={!userExists}
+            value={chatMessage}
             onChange={(e) => setChatMessage(e.target.value)}
             sx={{ width: '100%' }}
-            id='outlined-basic'
-            label='Outlined'
+            id='chatMessage'
+            name='chatMessage'
+            label='Enter message here...'
             variant='outlined'
           />
         </Box>
