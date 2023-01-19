@@ -7,6 +7,7 @@ Initialized with React firebase hooks and Material UI.\
 A single Context will be provided to handle the logic between components.\
 Retrieve chats logic from firestore and render using List component.\
 Added Firebase Authentication with GoogleProvider.\
+Added custom querying to chat messages retrieval.\
 
 ## Available Scripts
 
